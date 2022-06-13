@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { use } = require("./Controller/memberController");
 const members = require("./Controller/memberController");
+const login = require("./Controller/loginController");
+
 // Acceso a las variables de entorno para la configuración del servidor
 require("dotenv").config();
 
@@ -24,6 +26,7 @@ database.once("connected", () => {
 const app = express();
 app.use(express.json());
 app.use("/members", members);
+app.use("/login", login);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
